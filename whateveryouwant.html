@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
+
 </head>
 <body>
 
@@ -34,7 +35,7 @@
         <p style="text-align: center; max-width: 600px; margin: 0 auto 20px auto;">
             A well-coded website can significantly enhance your small business's online presence, attract more customers, and streamline operations. I offer custom web development services tailored to your business needs.
         </p>
-        <form action="mailto:xavierbowman71@gmail.com" method="post" enctype="text/plain" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+        <form id="contact" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
             <label for="name">Name:</label>
             <input type="text" id="name" name="Name" required>
 
@@ -59,7 +60,8 @@
             <label for="message">Additional Information:</label>
             <textarea id="message" name="Additional Information" rows="4"></textarea>
 
-            <button type="submit" style="padding: 10px; background-color: var(--accent); color: white; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+            <button id="submit" type="button" style="padding: 10px; background-color: var(--accent); color: white; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+        </form>
      </menu>
       
 
@@ -78,4 +80,48 @@
 
     <a href="index.html" style="color:var(--text); position: fixed; bottom: 10px; left: 10px; text-decoration: underline;">&larr; Back to Home</a>
 </body>
+
+    <script defer>
+
+       
+        // Select the form using a querySelector and add an event listener for submit
+        const submitButton = document.querySelector('#contact button');        
+        
+        submitButton.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const form= document.querySelector('#contact');
+            const formData = new FormData(form);
+            
+            const params = new URLSearchParams();
+            params.append('from', formData.get('Name') + ' <' + formData.get('Email') + '>');
+            params.append('to', 'xavierbowman71@gmail.com');
+            params.append('subject', 'New Contact Form Submission from ' + formData.get('Name'));
+            params.append('text',
+                'Name: ' + formData.get('Name') + '\n' +
+                'Email: ' + formData.get('Email') + '\n' +
+                'Business Name: ' + formData.get('Business Name') + '\n' +
+                'Current Website: ' + formData.get('Current Website') + '\n' +
+                'Services Interested In: ' + formData.getAll('Services Interested In').join(', ') + '\n' +
+                'Additional Information: ' + formData.get('Additional Information') + '\n'
+            );
+            const apiKey = `880894d50f3a6450b17ecae25de981a7-97129d72-489f7731`;
+            fetch("https://api.mailgun.net/v3/sandbox54eabfd15c7d449f845e681ba1c7cdc4.mailgun.org/messages", {
+                method: "POST",
+                body: params,
+                headers: {
+                    Authorization: `Basic ${btoa(`api:${apiKey}`)}`,
+                },
+            })
+
+        });
+
+
+        // Within the event handler, build an object for the request body with fields from, to, subject, text. Use form data to create the body
+
+        // Use fetch to send the POST request to https://api.mailgun.net/v3/YOUR_DOMAIN_NAME/messages
+        // Hint: Replace YOUR_DOMAIN_NAME with window.location.hostname
+
+        // Handle the response and show a success or error message
+    </script>
 </html>

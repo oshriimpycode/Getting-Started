@@ -121,6 +121,14 @@
         sideNav.querySelectorAll('a').forEach(link => {
             link.onclick = () => sideNav.classList.remove('open');
         });
+        const obj = {
+            a: 'a',
+            b: 'not b',
+        }
+
+        obj.a = 'changed a';
+
+        const zac = obj.a;
         // Bio photo upload
         document.getElementById('bioPhoto').addEventListener('change', function(e) {
             const file = e.target.files[0];
