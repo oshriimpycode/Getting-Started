@@ -7,7 +7,72 @@
     <title>Document</title>
 </head>
 <body>
-    Hi there!
+
+        <header>
+            <div class="title">Contact Form</div>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+       </header>
+        <nav id="sideNav">
+            <a href="index.html">Home</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+ 
+     
+    
+     
+        
+        
+    <menu>
+        <h1 style="text-align: center; margin-bottom: 20px;">Web Development Services</h1>
+        <p style="text-align: center; max-width: 600px; margin: 0 auto 20px auto;">
+            A well-coded website can significantly enhance your small business's online presence, attract more customers, and streamline operations. I offer custom web development services tailored to your business needs.
+        </p>
+        <form action="mailto:xavierbowman71@gmail.com" method="post" enctype="text/plain" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="Name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="Email" required>
+
+            <label for="business">Business Name:</label>
+            <input type="text" id="business" name="Business Name">
+
+            <label for="website">Current Website (if any):</label>
+            <input type="url" id="website" name="Current Website">
+
+            <label for="services">Services Interested In:</label>
+            <select id="services" name="Services Interested In" multiple>
+                <option value="website-design">Website Design</option>
+                <option value="ecommerce">Marketing Solutions</option>
+                <option value="seo">Graphic Design</option>
+                <option value="maintenance">Website Maintenance</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="message">Additional Information:</label>
+            <textarea id="message" name="Additional Information" rows="4"></textarea>
+
+            <button type="submit" style="padding: 10px; background-color: var(--accent); color: white; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+     </menu>
+      
+
+        
+
+
+ 
+   
+
+
+
+
+
 
 
 
