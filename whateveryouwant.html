@@ -80,19 +80,21 @@
 
     <a href="index.html" style="color:var(--text); position: fixed; bottom: 10px; left: 10px; text-decoration: underline;">&larr; Back to Home</a>
 </body>
-
+    <!-- this script tag placed after body so that query selectors can function properly -->
     <script defer>
 
        
-        // Select the form using a querySelector and add an event listener for submit
+        // Select the contact button using a querySelector 
         const submitButton = document.querySelector('#contact button');        
-        
-        submitButton.addEventListener("click", (e) => {
+        // click behavior for submit button 
+        submitButton.addEventListener("click", async (e) => {
+            // prevent default form submission behavior
             e.preventDefault();
-
+            // selecting the form and creating form data object
             const form= document.querySelector('#contact');
             const formData = new FormData(form);
             
+            // build request paremeters using user input from form data object
             const params = new URLSearchParams();
             params.append('from', formData.get('Name') + ' <' + formData.get('Email') + '>');
             params.append('to', 'xavierbowman71@gmail.com');
@@ -105,15 +107,19 @@
                 'Services Interested In: ' + formData.getAll('Services Interested In').join(', ') + '\n' +
                 'Additional Information: ' + formData.get('Additional Information') + '\n'
             );
+            // TODO: MAKE THIS MORE SECURE
             const apiKey = `880894d50f3a6450b17ecae25de981a7-97129d72-489f7731`;
-            fetch("https://api.mailgun.net/v3/sandbox54eabfd15c7d449f845e681ba1c7cdc4.mailgun.org/messages", {
+            // Send the email request using fetch
+            const response = fetch("https://api.mailgun.net/v3/sandbox54eabfd15c7d449f845e681ba1c7cdc4.mailgun.org/messages", {
                 method: "POST",
                 body: params,
                 headers: {
                     Authorization: `Basic ${btoa(`api:${apiKey}`)}`,
                 },
             })
-
+            .catch((error) => {
+                // TODO: Handle error responses
+            });
         });
 
 
