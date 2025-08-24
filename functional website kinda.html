@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xavier's Interactive Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-dark: #222326;
+            --gold: #FFD700;
+            --bubble: #33343a;
+            --bubble-light: #44454b;
+            --text: #FFD700;
+            --bubble-radius: 18px;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 32px 0 32px;
+        }
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .hamburger {
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 1001;
+        }
+        .hamburger span {
+            display: block;
+            width: 32px;
+            height: 4px;
+            margin: 6px auto;
+            background: var(--gold);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            right: -260px;
+            width: 260px;
+            height: 100vh;
+            background: var(--bubble);
+            box-shadow: -2px 0 12px rgba(0,0,0,0.3);
+            transition: right 0.3s;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding-top: 80px;
+        }
+        nav.open {
+            right: 0;
+        }
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 18px 32px;
+            border-bottom: 1px solid #444;
+            transition: background 0.2s;
+        }
+        nav a:hover {
+            background: var(--bubble-light);
+        }
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            padding: 60px 0;
+            scroll-snap-align: start;
+        }
+        .bubble {
+            background: var(--bubble-light);
+            border-radius: var(--bubble-radius);
+            padding: 32px;
+            max-width: 600px;
+            margin: 0 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        .section img {
+            max-width: 320px;
+            max-height: 320px;
+            border-radius: var(--bubble-radius);
+            margin: 0 32px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+            object-fit: cover;
+            background: #555;
+        }
+        .upload-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 24px;
+        }
+        .upload-container input[type="file"] {
+            margin-top: 12px;
+            color: var(--gold);
+        }
+        .bio-photo {
+            width: 220px;
+            height: 220px;
+            border-radius: var(--bubble-radius);
+            object-fit: cover;
+            background: #555;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+        }
+        @media (max-width: 900px) {
+            .section {
+                flex-direction: column;
+                padding: 32px 0;
+            }
+            .bubble, .section img {
+                margin: 24px 0;
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title">Xavier</div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+    <nav id="sideNav">
+        <a href="#deca">DECA Club</a>
+        <a href="#interact">Interact Club</a>
+        <a href="#codingclub">Competitive Coding Club</a>
+        <a href="#speechdebate">Speech & Debate</a>
+        <a href="#cshs">Computer Science Honor Society</a>
+        <a href="#extracurriculars">Extracurriculars</a>
+        <a href="#bio">Bio</a>
+    </nav>
+
+    <!-- Clubs Sections -->
+    <section class="section" id="deca">
+        <div class="bubble">
+            <h2>DECA Club</h2>
+            <p>DECA prepares emerging leaders and entrepreneurs in marketing, finance, hospitality, and management. As a member, I compete in business events and develop real-world skills.</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1515165562835-cf7747c7c1fa?auto=format&fit=crop&w=400&q=80" alt="DECA Club">
+    </section>
+    <section class="section" id="interact">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Interact Club">
+        <div class="bubble">
+            <h2>Interact Club</h2>
+            <p>Interact Club is a Rotary-sponsored service club for young people. I participate in community service projects and develop leadership skills through volunteering.</p>
+        </div>
+    </section>
+    <section class="section" id="codingclub">
+        <div class="bubble">
+            <h2>Competitive Coding Club</h2>
+            <p>In Competitive Coding Club, I solve algorithmic challenges, participate in hackathons, and collaborate with peers to improve my programming skills.</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Coding Club">
+    </section>
+    <section class="section" id="speechdebate">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Speech and Debate">
+        <div class="bubble">
+            <h2>Speech & Debate</h2>
+            <p>Speech and Debate has helped me develop public speaking, critical thinking, and argumentation skills through competitive events and team collaboration.</p>
+        </div>
+    </section>
+    <section class="section" id="cshs">
+        <div class="bubble">
+            <h2>Computer Science Honor Society</h2>
+            <p>As a member of CSHS, I promote computer science education, mentor younger students, and participate in outreach activities to inspire interest in technology.</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="CSHS">
+    </section>
+
+    <!-- Extracurriculars Section -->
+    <section class="section" id="extracurriculars">
+        <div class="bubble">
+            <h2>Extracurriculars Outside School</h2>
+            <ul>
+                <li><strong>Coding:</strong> Building apps, websites, and solving real-world problems through code.</li>
+                <li><strong>Lawn Mowing:</strong> Providing reliable lawn care services in my neighborhood.</li>
+                <li><strong>Assisting Small Businesses Technologically:</strong> Helping local businesses set up websites, manage social media, and troubleshoot tech issues.</li>
+            </ul>
+        </div>
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Extracurriculars">
+    </section>
+
+    <!-- Definitions Section -->
+    <section class="section" id="definitions">
+        <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80" alt="Coding">
+        <div class="bubble">
+            <h2>Definitions</h2>
+            <ul>
+                <li><strong>Coding:</strong> Writing instructions for computers to solve problems or automate tasks.</li>
+                <li><strong>Lawn Mowing:</strong> Maintaining lawns by cutting grass and ensuring a neat appearance.</li>
+                <li><strong>Assisting Small Businesses Technologically:</strong> Supporting businesses with digital solutions and tech troubleshooting.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Bio Section -->
+    <section class="section" id="bio">
+        <div class="bubble">
+            <h2>About Xavier</h2>
+            <p>
+                I am a hardworking, creative, and passionate individual dedicated to making a positive impact in my community. Whether through leadership in clubs, volunteering, or helping small businesses, I strive to use my skills to help others and grow as a person.
+            </p>
+            <div class="upload-container">
+                <label for="bioPhoto">Upload your photo:</label>
+                <input type="file" id="bioPhoto" accept="image/*">
+                <img id="bioImg" class="bio-photo" src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=400&q=80" alt="Your Bio Photo">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const sideNav = document.getElementById('sideNav');
+        hamburgerBtn.onclick = () => {
+            sideNav.classList.toggle('open');
+        };
+        // Close nav on link click
+        sideNav.querySelectorAll('a').forEach(link => {
+            link.onclick = () => sideNav.classList.remove('open');
+        });
+        // Bio photo upload
+        document.getElementById('bioPhoto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    document.getElementById('bioImg').src = ev.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

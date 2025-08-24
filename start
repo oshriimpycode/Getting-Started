@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shrimp Nation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #3519d3; }
+        h1 { color: #333; }
+        p { color: #555; }
+        nav a { margin: 0 10px; text-decoration: none; color: #0077cc; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+    </nav>
+    <h1>Welcome to My Website</h1>
+    <p>This is shrimps site! CSS.</p>
+</body>
+</html>
