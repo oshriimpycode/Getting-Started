@@ -4,141 +4,7 @@
     <meta charset="UTF-8">
     <title>Xavier's Interactive Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        :root {
-            --bg-dark: #222326;
-            --gold: #FFD700;
-            --bubble: #33343a;
-            --bubble-light: #44454b;
-            --text: #FFD700;
-            --bubble-radius: 18px;
-        }
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text);
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 32px 0 32px;
-            position: sticky;
-            top: 0;
-        }
-        .title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-        .hamburger {
-            width: 40px;
-            height: 40px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            z-index: 1001;
-        }
-        .hamburger span {
-            display: block;
-            width: 32px;
-            height: 4px;
-            margin: 6px auto;
-            background: var(--gold);
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-        nav {
-            position: fixed;
-            top: 0;
-            right: -260px;
-            width: 260px;
-            height: 100vh;
-            background: var(--bubble);
-            box-shadow: -2px 0 12px rgba(0,0,0,0.3);
-            transition: right 0.3s;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            padding-top: 80px;
-        }
-        nav.open {
-            right: 0;
-        }
-        nav a {
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 1.2rem;
-            padding: 18px 32px;
-            border-bottom: 1px solid #444;
-            transition: background 0.2s;
-        }
-        nav a:hover {
-            background: var(--bubble-light);
-        }
-        .section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: row;
-            padding: 60px 0;
-            scroll-snap-align: start;
-        }
-        .bubble {
-            background: var(--bubble-light);
-            border-radius: var(--bubble-radius);
-            padding: 32px;
-            max-width: 600px;
-            margin: 0 32px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
-            color: var(--gold);
-            font-size: 1.2rem;
-        }
-        .section img {
-            max-width: 320px;
-            max-height: 320px;
-            border-radius: var(--bubble-radius);
-            margin: 0 32px;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.3);
-            object-fit: cover;
-            background: #555;
-        }
-        .upload-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 24px;
-        }
-        .upload-container input[type="file"] {
-            margin-top: 12px;
-            color: var(--gold);
-        }
-        .bio-photo {
-            width: 220px;
-            height: 220px;
-            border-radius: var(--bubble-radius);
-            object-fit: cover;
-            background: #555;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.3);
-        }
-        @media (max-width: 900px) {
-            .section {
-                flex-direction: column;
-                padding: 32px 0;
-            }
-            .bubble, .section img {
-                margin: 24px 0;
-            }
-        }
-        html {
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -257,8 +123,11 @@
                     document.getElementById('bioImg').src = ev.target.result;
                 };
                 reader.readAsDataURL(file);
+            
             }
+
         });
+
     </script>
 </body>
 </html>
